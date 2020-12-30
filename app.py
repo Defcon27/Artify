@@ -6,6 +6,8 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
+
+# GET Index Route
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
@@ -13,9 +15,8 @@ def index():
 
 
 
-#app.config["IMAGE_UPLOAD"] = ../../......
 
-
+# GET, POST Image Upload Route
 @app.route('/upload-image', methods=['GET', 'POST'])
 def upload_image():
 
