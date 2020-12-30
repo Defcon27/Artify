@@ -1,16 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artify</title>
-</head>
 
-<body>
+{% block head %}
+<title>Artify</title>
+{% endblock %}
 
-    <h1>Hello</h1>
 
-</body>
 
-</html>
+
+
+
+{% block body %}
+
+
+<div class="text-center m-4">
+    <span class="heading">Give your Image an Artistic Look</span>
+</div>
+
+
+<div class="text-center">
+    <a href="/upload-image">
+        <button type="button" class="btn btn-dark btn-rounded upload-button">Upload Image</button>
+    </a>
+</div>
+
+
+{% endblock %}
