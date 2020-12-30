@@ -1,5 +1,7 @@
 import os
+import cv2
 from flask import Flask, render_template, request, redirect
+from artify import ClusterImage
 
 
 app = Flask(__name__)
@@ -11,7 +13,6 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
-
 
 
 
@@ -28,6 +29,17 @@ def upload_image():
                 user_imgname = "user_img."+ ext
                 image.save( os.path.join("static/images/", user_imgname) )
                 print("Image" + user_imgname + "Saved")
+
+                # Image Processing
+                iterations=10
+                k=15
+                artified = ClusterImage("static/images/"+user_imgname)
+                artified = cv2.cvtColor(artified, cv2.COLOR_RGB2BGR)
+                cv2.imwrite("static/images/clustered_output.jpg", artified)
+                print("Processed Image saved")
+
+                return redirect('/output')
+
             else:
                 print("Image Type not supported")
 
@@ -35,6 +47,15 @@ def upload_image():
 
 
     return render_template("upload_image.html")
+
+
+
+# GET Output Route
+@app.route('/output', methods=["GET"])
+def output_image():
+    return render_template("output.html")
+
+
 
 
 

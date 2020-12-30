@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-def ClusterImage(path, iterations=40, k=5):
+def ClusterImage(path, iterations=10, k=15):
 
     image = cv2.imread(path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -35,11 +35,16 @@ def ClusterImage(path, iterations=40, k=5):
     return segmented_image
 
 
-user_image = glob.glob("static/images/user_img.*")[0]
-print(user_image)
 
 
-art = ClusterImage(user_image, 5, 10)
-art = cv2.cvtColor(art, cv2.COLOR_RGB2BGR)
-cv2.imshow('Artified Img', art)
-cv2.waitKey()
+# user_image = glob.glob("static/images/user_img.*")[0]
+# print(user_image)
+
+
+# art = ClusterImage(user_image, 10, 15)
+# art = cv2.cvtColor(art, cv2.COLOR_RGB2BGR)
+# cv2.imshow('Artified Img', art)
+# cv2.waitKey()
+
+# cv2.imwrite("static/images/clustered_output.jpg", art)
+# print("Image Saved")
