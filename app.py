@@ -28,7 +28,7 @@ def upload_image():
             if ext in ['.png', 'jpg', 'jpeg', 'bmp']:
                 user_imgname = "user_img."+ ext
                 image.save( os.path.join("static/images/", user_imgname) )
-                print("Image" + user_imgname + "Saved")
+                print("Image" + user_imgname + " Saved")
 
                 # Image Processing
                 iterations=10
@@ -43,10 +43,16 @@ def upload_image():
             else:
                 print("Image Type not supported")
 
-            return redirect(request.url) 
+            return redirect(request.url)
+        
+    elif request.method == "GET":
+        # Removing previous cache files
+        output_img_path = "static/images/clustered_output.jpg"
+        if os.path.isfile(output_img_path):
+            os.remove(output_img_path)
+            print("Prev output removed")
 
-
-    return render_template("upload_image.html")
+        return render_template("upload_image.html")
 
 
 

@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-def ClusterImage(path, iterations=10, k=15):
+def ClusterImage(path, iterations=10, k=10):
 
     image = cv2.imread(path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
